@@ -7,19 +7,13 @@ import { Players } from './../imports/api/players';
 
 import Header from './../imports/ui/Header';
 import AddPlayer from './../imports/ui/AddPlayer';
+import Player from './../imports/ui/Player';
 
 
 const renderPlayers = (players)=>{
   return players.map((players)=>{
     return (
-      <div key={players._id}>
-        <p>
-          {players.name} has {players.score} point(s).
-          <button onClick={()=>{Players.update(players._id, {$inc:{score: 1}})}}>+1</button>
-          <button onClick={()=>{Players.update(players._id, {$inc:{score: -1}})}}>-1</button>
-          <button onClick={()=>{Players.remove(players._id)}}>Delete</button>
-        </p>
-      </div>
+      <Player key={players._id} players={players}/>
     )
   });
 };
